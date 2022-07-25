@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Musicorpus Profil Page</title>
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul class="tabs">
+        <li class="tab is-active"><a data-switcher data-tab="1"  class="logo">
+          <img src="{{request_user_photo}}">
+          <span class="nav-item">{{request_user_name}}</span>
+        </a></li>
+        <li><a href="/main">
+          <i class="fas fa-home"></i>
+          <span class="nav-item">Feed</span>
+        </a></li>
+        
+        <li class="tab"><a data-switcher data-tab="2">
+            <i class="fas fa-poll"></i>
+            <span class="nav-item">Statistics</span>
+        </a></li>
+        
+        <li class="tab"><a data-switcher data-tab="3" href="{% url 'playlist' %}">
+          <i class="fas fa-award"></i>
+          <span class="nav-item">Badges</span>
+        </a></li>
+        <li class="tab"><a data-switcher data-tab="4">
+            <i class="fas fa-music"></i>
+            <span class="nav-item">Playlists</span>
+          </a></li>
+        
+
+        <li><a href="/logout" class="logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>
+      </ul>
+    </nav>
+
+
+    <section class="main">
+      <div class="main-top">
+        <h1 style="color: #07df97;">Musicorpus</h1>
+        <i class="	fas fa-headphones-alt"></i>
+      </div>
+      <div class="users">
+        <div class="card">
+          <h4 style="color: #07df97;">User</h4>
+          <div class="per">
+            <table>
+              <tr>
+                <br><td><span>{{user_name}}</span></td>
+              </tr>
+              <tr>
+                <img src="{{user_photo}}" width="25%">
+              </tr>
+              <tr></tr>
+            </table>
+            {% if self_page is not True %}
+            {% if follow_status is True %}
+            <button id="follow">Following </button>
+            {% else %}
+            <button id="follow">Follow</button>
+            {% endif %}
+            {% endif %}
+            
+          </div>
+        </div>
+        <div class="card">
+            
+            <h4 style="color: #07df97;">Badges Earned</h4>
+            <img src="{% static 'images_profile/badges1.png' %}" width="18%">
+            <img src="{% static 'images_profile/badges2.png' %}" width="18%">
+            <img src="{% static 'images_profile/badges3.png' %}" width="18%">
+            <img src="{% static 'images_profile/badges4.png' %}" width="18%">
+          <div class="per">
+            <table>
+              <tr>
+                <td><span>{{badges.titanium}}</span></td>
+                <td><span>{{badges.gold}}</span></td>
+                <td><span>{{badges.silver}}</span></td>
+                <td><span>{{badges.bronze}}</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h4 style="color: #07df97;">Artists I Listened</h4>
+          <div class="per">
+            <table>
+              <tr>
+                <br><td><span>{{artist_listened}}</span></td>
+                
+              </tr>
+              <tr>
+                <td>Total</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h4 style="color:#07df97;">Songs I Listened</h4>
+          <div class="per">
+            <table>
+              <tr>
+                <br><td><span>{{songs_listened}}</span></td>
+              </tr>
+              <tr>
+                <td>Total</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+      </div>
+      <section>
+        <div class="page is-active" data-page="1">
+            <div class="one">
+              <div>
+                <p style="color: #07df97;">Favorite Songs Short Term</p>
+                
+                <a href="{{short_term_fav_songs.song1_link}}">{{short_term_fav_songs.song1}}</a>
+                <a href="{{short_term_fav_songs.song2_link}}">{{short_term_fav_songs.song2}}</a>
+                <a href="{{short_term_fav_songs.song3_link}}">{{short_term_fav_songs.song3}}</a>
+                <a href="{{short_term_fav_songs.song4_link}}">{{short_term_fav_songs.song4}}</a>
+                <a href="{{short_term_fav_songs.song5_link}}">{{short_term_fav_songs.song5}}</a>
+
+              </div>
+              <br>
+              <div>
+                <p style="color: #07df97;">Favorite Songs Medium Term</p>
+                
+                <a href="{{medium_term_fav_songs.song1_link}}">{{medium_term_fav_songs.song1}}</a>
+                <a href="{{medium_term_fav_songs.song2_link}}">{{medium_term_fav_songs.song2}}</a>
+                <a href="{{medium_term_fav_songs.song3_link}}">{{medium_term_fav_songs.song3}}</a>
+                <a href="{{medium_term_fav_songs.song4_link}}">{{medium_term_fav_songs.song4}}</a>
+                <a href="{{medium_term_fav_songs.song5_link}}">{{medium_term_fav_songs.song5}}</a>
+
+              </div>
+              <br>
+              <div>
+                <p style="color: #07df97;">Favorite Songs Long Term</p>
+                
+                <a href="{{long_term_fav_songs.song1_link}}">{{long_term_fav_songs.song1}}</a>
+                <a href="{{long_term_fav_songs.song2_link}}">{{long_term_fav_songs.song2}}</a>
+                <a href="{{long_term_fav_songs.song3_link}}">{{long_term_fav_songs.song3}}</a>
+                <a href="{{long_term_fav_songs.song4_link}}">{{long_term_fav_songs.song4}}</a>
+                <a href="{{long_term_fav_songs.song5_link}}">{{long_term_fav_songs.song5}}</a>
+
+              </div>
+            </div>
+            <div class="one">
+              <div>
+                <div>
+                  <p style="color: #07df97;">Favorite Artists Short Term</p>
+                  
+                  <a href="{{short_term_fav_artists.artist1_link}}">{{short_term_fav_artists.artist1}}</a>
+                  <a href="{{short_term_fav_artists.artist2_link}}">{{short_term_fav_artists.artist2}}</a>
+                  <a href="{{short_term_fav_artists.artist3_link}}">{{short_term_fav_artists.artist3}}</a>
+                  <a href="{{short_term_fav_artists.artist4_link}}">{{short_term_fav_artists.artist4}}</a>
+                  <a href="{{short_term_fav_artists.artist5_link}}">{{short_term_fav_artists.artist5}}</a>
+  
+                </div>
+                <br>
+                <div>
+                  <p style="color: #07df97;">Favorite Artists Medium Term</p>
+                  
+                  <a href="{{medium_term_fav_artists.artist1_link}}">{{medium_term_fav_artists.artist1}}</a>
+                  <a href="{{medium_term_fav_artists.artist2_link}}">{{medium_term_fav_artists.artist2}}</a>
+                  <a href="{{medium_term_fav_artists.artist3_link}}">{{medium_term_fav_artists.artist3}}</a>
+                  <a href="{{medium_term_fav_artists.artist4_link}}">{{medium_term_fav_artists.artist4}}</a>
+                  <a href="{{medium_term_fav_artists.artist5_link}}">{{medium_term_fav_artists.artist5}}</a>
+  
+                </div>
+                <br>
+                <div>
+                  <p style="color: #07df97;">Favorite Artists Long Term</p>
+                  
+                  <a href="{{long_term_fav_artists.artist1_link}}">{{long_term_fav_artists.artist1}}</a>
+                  <a href="{{long_term_fav_artists.artist2_link}}">{{long_term_fav_artists.artist2}}</a>
+                  <a href="{{long_term_fav_artists.artist3_link}}">{{long_term_fav_artists.artist3}}</a>
+                  <a href="{{long_term_fav_artists.artist4_link}}">{{long_term_fav_artists.artist4}}</a>
+                  <a href="{{long_term_fav_artists.artist5_link}}">{{long_term_fav_artists.artist5}}</a>
+  
+                </div>
+
+              </div>
+            </div>
+            <div class="one">
+              <div>
+                <p style="color: #07df97;">Favorite Genres Short Term</p>
+                
+                <a href="{{short_term_fav_genres.artist1_link}}">{{short_term_fav_genres.genre1}}</a>
+                <a href="{{short_term_fav_genres.artist2_link}}">{{short_term_fav_genres.genre2}}</a>
+                <a href="{{short_term_fav_genres.artist3_link}}">{{short_term_fav_genres.genre3}}</a>
+                <a href="{{short_term_fav_genres.artist4_link}}">{{short_term_fav_genres.genre4}}</a>
+                <a href="{{short_term_fav_genres.artist5_link}}">{{short_term_fav_genres.genre5}}</a>
+
+              </div>
+              <br>
+              <div>
+                <p style="color: #07df97;">Favorite Genres Medium Term</p>
+                
+                <a href="{{medium_term_fav_genres.genre1_link}}">{{medium_term_fav_genres.genre1}}</a>
+                <a href="{{medium_term_fav_genres.genre2_link}}">{{medium_term_fav_genres.genre2}}</a>
+                <a href="{{medium_term_fav_genres.genre3_link}}">{{medium_term_fav_genres.genre3}}</a>
+                <a href="{{medium_term_fav_genres.genre4_link}}">{{medium_term_fav_genres.genre4}}</a>
+                <a href="{{medium_term_fav_genres.genre5_link}}">{{medium_term_fav_genres.genre5}}</a>
+
+              </div>
+              <br>
+              <div>
+                <p style="color: #07df97;">Favorite Genres Long Term</p>
+                
+                <a href="{{long_term_fav_genres.genre1_link}}">{{long_term_fav_genres.genre1}}</a>
+                <a href="{{long_term_fav_genres.genre2_link}}">{{long_term_fav_genres.genre2}}</a>
+                <a href="{{long_term_fav_genres.genre3_link}}">{{long_term_fav_genres.genre3}}</a>
+                <a href="{{long_term_fav_genres.genre4_link}}">{{long_term_fav_genres.genre4}}</a>
+                <a href="{{long_term_fav_genres.genre5_link}}">{{long_term_fav_genres.genre5}}</a>
+
+              </div>
+            </div>
+            <div class="one">
+              <div>
+                <p style="color: #07df97;">Favorite Genres Short Term</p>
+                
+                <a href="{{short_term_fav_genres.artist1_link}}">{{short_term_fav_genres.genre1}}</a>
+                <a href="{{short_term_fav_genres.artist2_link}}">{{short_term_fav_genres.genre2}}</a>
+                <a href="{{short_term_fav_genres.artist3_link}}">{{short_term_fav_genres.genre3}}</a>
+                <a href="{{short_term_fav_genres.artist4_link}}">{{short_term_fav_genres.genre4}}</a>
+                <a href="{{short_term_fav_genres.artist5_link}}">{{short_term_fav_genres.genre5}}</a>
+
+              </div>
+              <br>
+              <div>
+                <p style="color: #07df97;">Favorite Genres Medium Term</p>
+                
+                <a href="{{medium_term_fav_genres.genre1_link}}">{{medium_term_fav_genres.genre1}}</a>
+                <a href="{{medium_term_fav_genres.genre2_link}}">{{medium_term_fav_genres.genre2}}</a>
+                <a href="{{medium_term_fav_genres.genre3_link}}">{{medium_term_fav_genres.genre3}}</a>
+                <a href="{{medium_term_fav_genres.genre4_link}}">{{medium_term_fav_genres.genre4}}</a>
+                <a href="{{medium_term_fav_genres.genre5_link}}">{{medium_term_fav_genres.genre5}}</a>
+
+              </div>
+              <br>
+              <div>
+                <p style="color: #07df97;">Favorite Genres Long Term</p>
+                
+                
+
+              </div>
+            </div>
+            
+        </div>
+        <div class="page" data-page="4">
+            
+          <h2>Playlists</h2>
+          <br>
+        
+        <div class="one">
+        {% for playlist in user_playlists %}
+          <a href="{{playlist.link}}"><img src="{{playlist.photo}}" style='width:30%;height:30%;'>{{playlist.name}}</a>
+        {% endfor %}
+          
+        </div>
+      </div>
+      <div class="page" data-page="2">
+        <h2>Statistics</h2>
+        <img src="{% static 'bar.jpg' %}">
+      </div>
+      <div class="page" data-page="3">
+        <h2>page3</h2>
+      </div>
+
+      </section>
+
+      
+    </section>
+  </div>
+  <script src="{% static "js/profile_last.js" %}"/></script>
+  
+</body>
+</html>

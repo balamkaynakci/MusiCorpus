@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
+    <!-- <title>Login & Signup Form | Swda </title> -->
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title-text">
+        
+<div class="title signup">
+Signup Form</div>
+</div>
+<div class="form-container">
+        
+<div class="form-inner">
+          
+<form action="/signup" method="post" class="signup">
+
+            <div id="signup-message">
+
+            </div>
+
+            <div class="field">
+              <input type="email" placeholder="Email Address" name="email" id="email-signup" required>
+            </div>
+
+            <div class="field">
+              <input type="text" placeholder="City" name="city" id="city-signup" required>
+            </div>
+
+            <div class="field">
+              <input type="text" placeholder="Gender" name="gender" id="gender-signup" required>
+            </div>
+
+            <div class="field">
+              <input type="password" placeholder="Password" name="password1" id="password1-signup" required>
+            </div>
+
+            <div class="field">
+              <input type="password" placeholder="Confirm password" name="password2" id="password2-signup" required>
+            </div>
+
+            
+
+            <div class="field btn">
+              <div class="btn-layer">
+          </div>
+<input type="submit" value="Sign up" id="submit-button">
+            </div>
+            
+
+                  <div class="field">
+                    <input type="hidden" id="access-token" name="access" value="">
+                  </div>
+      
+                  <div class="field">
+                    <input type="hidden" id="refresh-token" name="refresh" value="">
+                  </div>
+  
+</form>
+</div>
+</div>
+</div>
+  
+  <script src="./static/js/signup.js"></script>
+
+  </body>
+</html>
